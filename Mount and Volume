@@ -1,0 +1,5 @@
+docker volume create nginx #создаётся том по пути /var/lib/docker/volumes/nginx
+docker run --rm --name nginx -v /var/lib/docker/volumes/nginx/_data:/usr/share/nginx/html #мы монтируем директорию из контейнера в директорию на реальном хосте в формате -->
+/директория на реальной машине:/директория контейнера
+
+docker run --rm --name nginx --mount type=(bind,tmpfs,volume), src=/tmp,dst=/tmp/logs nginx:latest# источник - директория на реальной машине, получатель - директория в контейнере
